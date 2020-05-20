@@ -75,6 +75,21 @@
                     <target>${jdk.version}</target>
                 </configuration>
             </plugin>
+            <!-- 用来生成Java Agent Jar需要的MANIFEST.MF-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Premain-Class>agent.Agent</Premain-Class>
+                            <Agent-Class>agent.Agent</Agent-Class>
+                            <Can-Redefine-Classes>true</Can-Redefine-Classes>
+                            <Can-Retransform-Classes>true</Can-Retransform-Classes>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
