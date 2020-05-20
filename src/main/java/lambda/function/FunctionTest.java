@@ -15,6 +15,9 @@ import java.util.function.Function;
  */
 public class FunctionTest {
     private Person personInstance;
+    public FunctionTest() {
+        System.out.println("init");
+    }
 
     @Before
     public void initPerson() {
