@@ -1,15 +1,15 @@
-package juc;
+package juc.volatiledemo;
 
 /**
  * @author wangqiwei
  * @date 2020/05/25 6:46 PM
  */
-public class VolatileTest2 {
+public class VolatileTest3 {
 
     private boolean flag = true;
 
     public static void main(String[] args) throws InterruptedException {
-        VolatileTest2 volatileTest = new VolatileTest2();
+        VolatileTest3 volatileTest = new VolatileTest3();
         Thread threadA = new Thread(() -> {
             volatileTest.change();
             System.out.println("aaa");
@@ -30,6 +30,10 @@ public class VolatileTest2 {
 
     private void foreach() {
         while (flag) {
+            /**
+             *println内有同步代码块
+             */
+            System.out.println("print");
         }
     }
 }
