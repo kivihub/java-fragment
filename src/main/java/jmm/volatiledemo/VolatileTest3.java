@@ -1,15 +1,15 @@
-package juc.volatiledemo;
+package jmm.volatiledemo;
 
 /**
  * @author wangqiwei
  * @date 2020/05/25 6:46 PM
  */
-public class VolatileTest {
+public class VolatileTest3 {
 
     private boolean flag = true;
 
     public static void main(String[] args) throws InterruptedException {
-        VolatileTest volatileTest = new VolatileTest();
+        VolatileTest3 volatileTest = new VolatileTest3();
         Thread threadA = new Thread(() -> {
             volatileTest.change();
             System.out.println("aaa");
@@ -30,13 +30,10 @@ public class VolatileTest {
 
     private void foreach() {
         while (flag) {
-            try {
-                /**
-                 *sleep方法内加了内存栅栏
-                 */
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-            }
+            /**
+             *println内有同步代码块
+             */
+            System.out.println("print");
         }
     }
 }
